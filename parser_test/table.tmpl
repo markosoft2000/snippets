@@ -1,0 +1,26 @@
+<?php
+/** @var string $caption */
+/** @var string[] $tableHeaders */
+/** @var DataStorage $dataStorage */
+?>
+
+<hr>
+<h4><?=$caption?></h4>
+
+<table border="1">
+    <tr>
+        <?php foreach ($tableHeaders as $header):?>
+            <th><?=$header?></th>
+        <?php endforeach;?>
+    </tr>
+
+        <?php foreach ($dataStorage->getAll() as $row):?>
+            <tr>
+                <?php foreach ($row as $column):?>
+                    <td><?=($column instanceof DateTimeImmutable) ? $column->format('Y-m-d'): $column ?></td>
+                <?php endforeach;?>
+            </tr>
+        <?php endforeach;?>
+</table>
+
+<hr>
